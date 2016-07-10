@@ -8,15 +8,15 @@
 
 import UIKit
 
-#if os(OSX)
-    import ifaddrsOSX
-#elseif os(iOS)
+//#if os(OSX)
+//    import ifaddrsOSX
+//#elseif os(iOS)
 #if (arch(i386) || arch(x86_64))
     import ifaddrsiOSSim
     #else
     import ifaddrsiOS
 #endif
-#endif
+//#endif
 
 @objc public protocol LANScannerDelegate
 {
@@ -95,7 +95,7 @@ public class LANScanner: NSObject {
                     self.baseAddressEnd = 255
                 }
                 
-                self.timer = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: #selector(LANScanner.pingAddress), userInfo: nil, repeats: true)
+                self.timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(LANScanner.pingAddress), userInfo: nil, repeats: true)
             }
         }
         else {
